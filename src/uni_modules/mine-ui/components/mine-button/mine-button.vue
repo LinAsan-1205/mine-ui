@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, defineEmits, toRefs, computed} from 'vue'
+import {toRefs, computed} from 'vue'
 import {createPropsDefault, createClassNamespace} from "./";
 import type {ButtonProps, ButtonEvents} from './type'
 
