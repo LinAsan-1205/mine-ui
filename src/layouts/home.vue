@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import TabBar from "@/components/layout/tab-bar.vue";
+import {onMounted} from "vue";
+
+onMounted(() => {
+  uni.hideTabBar()
+})
 </script>
 
 <template>

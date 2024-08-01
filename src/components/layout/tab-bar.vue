@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import {computed, ref, watch} from 'vue'
-import {getCurrentPage, type CurrentPage} from "mine-ui/utils"
+import {ref} from 'vue'
+import {getCurrentPage} from "mine-ui/utils"
+import {onShow} from "@dcloudio/uni-app";
 
 const tabBarList = [
   {
@@ -11,33 +12,36 @@ const tabBarList = [
   {
     icon: 'app',
     text: '应用',
+    route: 'pages/app/app'
   },
   {
     icon: 'chat',
     text: '聊天',
+    route: 'pages/chat/chat'
   },
   {
     icon: 'user',
     text: '我的',
+    route: 'pages/user/user'
   }
 ]
 const tabBarActive = ref(0)
-
-const route = computed((): CurrentPage => getCurrentPage())
-
-watch(() => route.value, (data: CurrentPage) => {
-  tabBarActive.value = tabBarList.findIndex(item => item.route === data.route)
-}, {immediate: true})
-
-const onTabItem = (index: number) => {
+const onTabItem = (route: string, index: number) => {
   tabBarActive.value = index
+  uni.switchTab({
+    url: `/${route}`
+  })
 }
+onShow(() => {
+  const currentPage = getCurrentPage()
+  tabBarActive.value = tabBarList.findIndex(item => item.route === currentPage.route)
+})
 </script>
 
 <template>
   <view class="tabBar">
     <view class="tabBar-list">
-      <view @click="onTabItem(index)"
+      <view @click="onTabItem(item.route, index)"
             :class="[`tabBar-list-item`,tabBarActive===index&&'tabBar-list-checked']"
             v-for="(item,index) in tabBarList"
             :key="index">

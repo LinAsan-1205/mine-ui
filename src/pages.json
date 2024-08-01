@@ -4,6 +4,11 @@
       "path": "pages/index/index",
       "type": "home",
       "layout": "home"
+    },
+    {
+      "path": "pages/user/user",
+      "type": "page",
+      "layout": "home"
     }
   ],
   "easycom": {
@@ -12,6 +17,21 @@
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "mine-ui"
+  },
+  "tabBar": {
+    "color": "#f2f3ff",
+    "selectedColor": "#0052d9",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "height": "0",
+    "list": [
+      {
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/user/user"
+      }
+    ]
   },
   "subPackages": []
 }

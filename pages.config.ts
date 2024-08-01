@@ -10,4 +10,19 @@ export default defineUniPages({
         navigationBarTextStyle: 'black',
         navigationBarTitleText: 'mine-ui',
     },
+    tabBar: {
+        color: '#f2f3ff',
+        selectedColor: '#0052d9',
+        backgroundColor: '#ffffff',
+        borderStyle: 'black',
+        height: '0',
+        list: [
+            {
+                pagePath: 'pages/index/index',
+            },
+            {
+                pagePath: 'pages/user/user',
+            },
+        ],
+    },
 })
