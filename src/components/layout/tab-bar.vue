@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import {getCurrentPage} from "mine-ui/utils"
+import {getCurrentPage, showMessage} from "mine-ui/utils"
 import {onShow} from "@dcloudio/uni-app";
 
 const tabBarList = [
@@ -29,7 +29,10 @@ const tabBarActive = ref(0)
 const onTabItem = (route: string, index: number) => {
   tabBarActive.value = index
   uni.switchTab({
-    url: `/${route}`
+    url: `/${route}`,
+    fail(result) {
+      showMessage(result.errMsg)
+    },
   })
 }
 onShow(() => {
