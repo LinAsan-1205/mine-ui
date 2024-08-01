@@ -21,6 +21,12 @@ export default defineUniPages({
                 pagePath: 'pages/index/index',
             },
             {
+                pagePath: 'pages/app/app',
+            },
+            {
+                pagePath: 'pages/chat/chat',
+            },
+            {
                 pagePath: 'pages/user/user',
             },
         ],

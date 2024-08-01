@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <view>user</view>
+  <view>
+    app
+  </view>
 </template>
 
 <style scoped>
@@ -12,6 +14,6 @@
 <route lang="json">
 {
 "layout": "home",
-"style": { "navigationBarTitleText": "我的" }
+"style": { "navigationBarTitleText": "组件" }
 }
 </route>

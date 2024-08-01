@@ -3,12 +3,31 @@
     {
       "path": "pages/index/index",
       "type": "home",
+      "layout": "home",
+      "style": {
+        "navigationBarTitleText": "mine-ui"
+      }
+    },
+    {
+      "path": "pages/app/app",
+      "type": "page",
+      "layout": "home",
+      "style": {
+        "navigationBarTitleText": "组件"
+      }
+    },
+    {
+      "path": "pages/chat/chat",
+      "type": "page",
       "layout": "home"
     },
     {
       "path": "pages/user/user",
       "type": "page",
-      "layout": "home"
+      "layout": "home",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
     }
   ],
   "easycom": {
@@ -27,6 +46,12 @@
     "list": [
       {
         "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/app/app"
+      },
+      {
+        "pagePath": "pages/chat/chat"
       },
       {
         "pagePath": "pages/user/user"

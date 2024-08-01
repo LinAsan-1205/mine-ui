@@ -14,6 +14,7 @@ const onClick = (_: MouseEvent, index: string | number) => {
 
 <route lang="json">
 {
-"layout": "home"
+"layout": "home",
+"style": { "navigationBarTitleText": "mine-ui" }
 }
 </route>
