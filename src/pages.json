@@ -2,9 +2,13 @@
   "pages": [
     {
       "path": "pages/index/index",
-      "type": "home"
+      "type": "home",
+      "layout": "home"
     }
   ],
+  "easycom": {
+    "autoscan": true
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "mine-ui"

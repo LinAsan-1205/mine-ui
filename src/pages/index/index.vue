@@ -10,3 +10,10 @@ const onClick = (_: MouseEvent, index: string | number) => {
 
 <style>
 </style>
+
+
+<route lang="json">
+{
+"layout": "home"
+}
+</route>
