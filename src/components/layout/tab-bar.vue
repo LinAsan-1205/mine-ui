@@ -61,8 +61,8 @@ const onTabItem = (index: number) => {
     }
 
     &-checked {
-      background-color: #f2f3ff;
-      color: #0052d9;
+      background-color: $uni-tab-active-color;
+      color: $uni-color-primary;
       font-weight: 800;
     }
   }
