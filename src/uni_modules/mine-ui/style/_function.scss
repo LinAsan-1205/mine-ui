@@ -1,0 +1,27 @@
+@use 'sass:map';
+
+$prefix: --mine;
+
+
+@function generate-css-var-name($name-units...) {
+  $cssVarName: $prefix;
+  @each $unit in $name-units {
+    @if $unit != '' {
+      $cssVarName: $cssVarName + '-' + $unit;
+    }
+  }
+  @return $cssVarName;
+}
+
+
+@mixin generate-css-var($name-units, $value) {
+  #{generate-css-var-name($name-units...)}: #{$value};
+}
+
+
+@mixin generate-css-vars($map,$prefix:'base') {
+  @each $key, $value in $map {
+    $name: '#{$key}-#{$prefix}';
+    @include generate-css-var($name, map.get($value, $prefix));
+  }
+}

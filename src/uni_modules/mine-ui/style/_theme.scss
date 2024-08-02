@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+$color: () !default;
+$color: map.deep-merge($color, (
+        'brand-color':(
+                "base": #007aff
+        ),
+        'success-color':(
+                "base": #2ba471
+        ),
+));
