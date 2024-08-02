@@ -2,5 +2,5 @@
 @use './style/index.scss' as *;
 
 :root {
-  @include generate-css-vars($color);
+  @include generate-all-css-vars($color);
 }

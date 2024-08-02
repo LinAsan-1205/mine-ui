@@ -1,7 +1,13 @@
 @use 'sass:map';
+@use 'sass:color';
+@use 'sass:math';
+@use './_theme.scss' as *;
 
-$prefix: --mine;
+$prefix: --mine !default;
 
+
+$color-black: #000000 !default;
+$color-white: #ffffff !default;
 
 @function generate-css-var-name($name-units...) {
   $cssVarName: $prefix;
@@ -18,10 +24,46 @@ $prefix: --mine;
   #{generate-css-var-name($name-units...)}: #{$value};
 }
 
+@mixin generate-level-css-vars($type, $maxLevel, $mode, $mixed-color) {
+  @for $i from 1 through $maxLevel {
+    $percentage: math.clamp(math.percentage(math.div($i, $maxLevel)), 0%, 99%);
+    $base-color: map.get($color, $type, 'base');
+    $mixed-result: color.mix($mixed-color, $base-color, $percentage);
+    @if $mixed-result == $color-white or $mixed_result == $color-black {
+      $adjusted-percentage: 95%;
+      $mixed-result: color.mix($mixed-color, $base-color, $adjusted-percentage);
+    }
+    $color: map.deep-merge(
+                    (
+                            $type: (
+                                    '#{$mode}-#{$i}': $mixed-result
+                            )
+                    ),
+                    $color
+    ) !global;
+  }
+}
+
+
+@each $type in map.keys($color) {
+  @include generate-level-css-vars($type, 5, 'light', $color-white);
+  @include generate-level-css-vars($type, 5, 'dark', $color-black);
+}
+
 
 @mixin generate-css-vars($map,$prefix:'base') {
   @each $key, $value in $map {
     $name: '#{$key}-#{$prefix}';
     @include generate-css-var($name, map.get($value, $prefix));
+  }
+}
+
+@mixin generate-all-css-vars($map) {
+  @each $key, $value in $map {
+    @each $currentKey in map.keys($value) {
+      $currentVal: map.get($value, $currentKey);
+      $name: '#{$key}-#{$currentKey}';
+      @include generate-css-var($name, $currentVal);
+    }
   }
 }
