@@ -1,0 +1,70 @@
+@use "sass:map";
+@use "sass:color";
+@use "../../../style/index.scss" as *;
+
+
+$button: () !default;
+$button: map.merge(
+                (
+                        bg-color:get-css-var('info', "color", "base"),
+                        text-color:get-css-var('black', "color", "base"),
+                        border-color:get-css-var('info', "color", "base"),
+                        border-radius: get-css-var('radius', "default"),
+                        font-size: get-css-var('font', 'size', "m"),
+                        font-weight: 600,
+                        size-large:48px
+                ),
+                $button
+);
+
+.#{$namespace}-button {
+  position: relative;
+  margin: 0;
+  overflow: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border: none;
+  background-image: none;
+  /* #ifdef APP-NVUE */
+  flex-direction: row;
+  /* #endif */
+  color: get-css-var('button', 'text', 'color');
+  background-color: get-css-var('button', 'bg', 'color');
+  border-radius: get-css-var('button', 'border', 'radius');
+  height: get-css-var('button', 'size', 'large');
+
+  &--var {
+    @include generate-preset-values('button', $button);
+  }
+
+
+  &--text {
+    font-size: get-css-var('button', 'font', 'size');
+    font-weight: get-css-var('button', 'font', 'weight');
+  }
+
+  &--block {
+    /* #ifndef APP-NVUE */
+    display: flex;
+    width: 100%;
+    /* #endif */
+    border-radius: 0;
+  }
+
+  &::after {
+    content: ' ';
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    transform: scale(0.5) translateZ(0);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    outline: none;
+    border: 1px solid get-css-var('button', 'border', 'color', 'base');
+  }
+}

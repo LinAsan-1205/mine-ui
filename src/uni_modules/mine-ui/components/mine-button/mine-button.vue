@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<ButtonProps>(), createPropsDefault<Button
   type: "button",
 }))
 
-const {index, block, disabled, type} = toRefs(props)
+const {index, block, disabled, type, theme} = toRefs(props)
 
 const emit = defineEmits<ButtonEvents>()
 
@@ -23,6 +23,7 @@ const buttonClass = computed(() => {
   return classes(
       createBEM(),
       createBEM("--var"),
+      createBEM(`--${theme.value}`),
       [
         disabled.value,
         createBEM("--disabled"),
@@ -30,7 +31,13 @@ const buttonClass = computed(() => {
       [
         block.value,
         createBEM("--block"),
-      ]
+      ],
+  )
+})
+
+const buttonTextClass = computed(() => {
+  return classes(
+      createBEM("--text"),
   )
 })
 
@@ -45,10 +52,10 @@ const getPhoneNumber = () => {
 
 <template>
   <button :type="type" @click="onClick" @getphonenumber="getPhoneNumber" :class="buttonClass">
-    <text>{{ text }}</text>
+    <text :class="buttonTextClass">{{ text }}</text>
   </button>
 </template>
 
-<style scoped>
-
+<style lang="scss">
+@import './style/button.scss';
 </style>

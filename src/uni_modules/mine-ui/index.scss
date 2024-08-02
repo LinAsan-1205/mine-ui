@@ -3,4 +3,6 @@
 
 :root {
   @include generate-all-css-vars($color);
+  @include generate-list-css-vars($radius, 'radius');
+  @include generate-list-css-vars($fontSize, 'font-size');
 }

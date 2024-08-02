@@ -1,5 +1,7 @@
 @use 'sass:map';
 
+$namespace: mine !default;
+
 $color: () !default;
 $color: map.deep-merge($color, (
         'brand-color':(
@@ -8,4 +10,38 @@ $color: map.deep-merge($color, (
         'success-color':(
                 "base": #2ba471
         ),
+        'warning-color':(
+                "base": #ff9900
+        ),
+        'danger-color':(
+                "base": #ff3b30
+        ),
+        'info-color':(
+                "base": #e7e7e7
+        ),
+        "black-color":(
+                "base": #000000
+        ),
 ));
+
+$radius: () !default;
+$radius: map.deep-merge(
+                (
+                        'default': 6px,
+                        'small': 8px,
+                        'medium': 12px,
+                        'large': 14px
+                ),
+                $radius
+);
+
+
+$fontSize: () !default;
+$fontSize: map.deep-merge(
+                (
+                        'm':16px
+                ),
+                $fontSize
+);
+
+

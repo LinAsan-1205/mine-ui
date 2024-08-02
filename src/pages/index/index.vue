@@ -1,5 +1,6 @@
 <template>
   <mine-button index="1" text="测试按钮" @click="onClick"/>
+  <mine-button index="2" text="测试按钮" block @click="onClick"/>
 </template>
 
 <script setup lang="ts">
