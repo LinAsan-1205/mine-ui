@@ -1,5 +1,5 @@
 const appendNamespace = 'mine' as const
-type Classes = (string | [boolean, string, string?])[]
+export type Classes = (string | [boolean, string, string?])[]
 const createClassNamespace = <C extends string>(classNamespace: C) => {
     const componentName = `${appendNamespace}-${classNamespace}` as const;
 
