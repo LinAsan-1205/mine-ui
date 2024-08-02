@@ -6,7 +6,7 @@ export interface CurrentPage {
 const getCurrentPage = (): CurrentPage => {
     const currentPages = getCurrentPages();
     if (currentPages.length === 0) {
-        return {};
+        throw new Error('未找到当前页面');
     }
     const currentPage = currentPages[currentPages.length - 1];
     const vm = currentPage.$vm;
